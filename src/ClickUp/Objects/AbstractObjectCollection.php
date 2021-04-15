@@ -82,7 +82,13 @@ abstract class AbstractObjectCollection extends AbstractObject implements \Itera
 	 */
 	public function getIterator()
 	{
-		return new \ArrayIterator($this->objects());
+		$objects = $this->objects();
+
+		if (!$objects) {
+			$objects = [];
+		}
+
+		return new \ArrayIterator($objects);
 	}
 }
 
